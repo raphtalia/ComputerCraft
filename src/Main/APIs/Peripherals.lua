@@ -1,0 +1,3 @@
+local Peripherals = {}
+
+return Peripherals

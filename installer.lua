@@ -1,0 +1,1 @@
+local repo = "https://github.com/raphtalia/ComputerCraft-scripts"

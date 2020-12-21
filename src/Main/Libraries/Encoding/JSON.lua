@@ -1,0 +1,3 @@
+local JSON = {}
+
+return JSON

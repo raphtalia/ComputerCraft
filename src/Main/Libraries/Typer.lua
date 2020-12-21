@@ -1,0 +1,3 @@
+local Typer = {}
+
+return Typer
