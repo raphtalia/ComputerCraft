@@ -1,3 +1,0 @@
-local Http = {}
-
-return Http

@@ -1,0 +1,37 @@
+local function runModule(path, envVars)
+    local fileHandler = fs.open(path, "r")
+    local source = fileHandler.readAll()
+
+    fileHandler.close()
+
+    local module = loadstring(source)
+    local env = getfenv(module)
+
+    if envVars then
+        for i,v in pairs(envVars) do
+            env[i] = v
+        end
+    end
+
+    local output = module()
+    if output then
+        return output
+    else
+        error("Module did not return any values")
+    end
+end
+
+if fs.exists("system") and fs.exists("system/Boot.lua") then
+    -- Attempt system boot
+    local success, error = runModule("system/Boot.lua")
+    if not success then
+        print("System boot failed: ", error)
+    end
+else
+    -- Need to install system
+    if fs.exists("disk") and fs.exists("disk/startup") then
+        -- Installer started from disk
+    else
+        -- Installer started locally
+    end
+end

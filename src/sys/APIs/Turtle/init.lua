@@ -1,3 +1,0 @@
-local Turtle = {}
-
-return Turtle

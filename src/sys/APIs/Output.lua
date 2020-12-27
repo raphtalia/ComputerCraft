@@ -1,3 +1,0 @@
-local Output = {}
-
-return Output
