@@ -172,3 +172,21 @@ type = "any"
 
 [gps.CHANNEL_GPS]
 property = true
+
+[[gps.locate]]
+type = "any"
+
+[[help.path.args]]
+type = "any"
+
+[[help.setPath.args]]
+type = "any"
+
+[[help.lookup.args]]
+type = "any"
+
+[[help.topics.args]]
+type = "any"
+
+[[help.completeTopic.args]]
+type = "any"
