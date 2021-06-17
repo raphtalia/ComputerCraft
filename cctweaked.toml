@@ -3,48 +3,48 @@
 base = "lua51"
 name = "cctweaked"
 
-[cctweaked.colors]
+[cctweaked.structs.colors."*"]
 
-[cctweaked.colours]
+[cctweaked.structs.colours."*"]
 
-[cctweaked.commands]
+[cctweaked.structs.commands."*"]
 
-[cctweaked.disk]
+[cctweaked.structs.disk."*"]
 
-[cctweaked.fs]
+[cctweaked.structs.fs."*"]
 
-[cctweaked.gps]
+[cctweaked.structs.gps."*"]
 
-[cctweaked.help]
+[cctweaked.structs.help."*"]
 
-[cctweaked.http]
+[cctweaked.structs.http."*"]
 
-[cctweaked.keys]
+[cctweaked.structs.keys."*"]
 
-[cctweaked.multishell]
+[cctweaked.structs.multishell."*"]
 
-[cctweaked.paintutils]
+[cctweaked.structs.paintutils."*"]
 
-[cctweaked.parallel]
+[cctweaked.structs.parallel."*"]
 
-[cctweaked.peripheral]
+[cctweaked.structs.peripheral."*"]
 
-[cctweaked.pocket]
+[cctweaked.structs.pocket."*"]
 
-[cctweaked.rednet]
+[cctweaked.structs.rednet."*"]
 
-[cctweaked.redstone]
+[cctweaked.structs.redstone."*"]
 
-[cctweaked.settings]
+[cctweaked.structs.settings."*"]
 
-[cctweaked.shell]
+[cctweaked.structs.shell."*"]
 
-[cctweaked.term]
+[cctweaked.structs.term."*"]
 
-[cctweaked.textutils]
+[cctweaked.structs.textutils."*"]
 
-[cctweaked.turtle]
+[cctweaked.structs.turtle."*"]
 
-[cctweaked.vector]
+[cctweaked.structs.vector."*"]
 
-[cctweaked.window]
+[cctweaked.structs.window."*"]
