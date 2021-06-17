@@ -1,7 +1,8 @@
 ## TODO: Typecheck arguments
 
 # ComputerCraft: Tweaked
-[cctweaked]
+[selene]
+base = "lua51"
 name = "cctweaked"
 
 [colors.white]
