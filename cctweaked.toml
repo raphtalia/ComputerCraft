@@ -5,6 +5,8 @@
 base = "lua51"
 name = "cctweaked"
 
+[colors]
+
 [colors.white]
 property = true
 
@@ -53,6 +55,8 @@ property = true
 [colors.black]
 property = true
 
+[commands]
+
 [[commands.native.args]]
 type = "any"
 
@@ -76,6 +80,8 @@ type = "any"
 
 [[commands.getBlockInfo.args]]
 type = "any"
+
+[disk]
 
 [[disk.isPresent.args]]
 type = "any"
@@ -109,6 +115,8 @@ type = "any"
 
 [[disk.getID.args]]
 type = "any"
+
+[fs]
 
 [[fs.isDriveRoot.args]]
 type = "any"
@@ -170,11 +178,15 @@ type = "any"
 [[fs.attributes.args]]
 type = "any"
 
+[gps]
+
 [gps.CHANNEL_GPS]
 property = true
 
 [[gps.locate]]
 type = "any"
+
+[help]
 
 [[help.path.args]]
 type = "any"
@@ -190,6 +202,8 @@ type = "any"
 
 [[help.completeTopic.args]]
 type = "any"
+
+[http]
 
 [[http.request.args]]
 type = "any"
@@ -211,6 +225,8 @@ type = "any"
 
 [[http.websocketAsync.args]]
 type = "any"
+
+[io]
 
 [io.stdin]
 property = true
@@ -248,8 +264,12 @@ type = "any"
 [[io.write.args]]
 type = "any"
 
+[keys]
+
 [[keys.getName.args]]
 type = "any"
+
+[multishell]
 
 [[multishell.getFocus.args]]
 type = "any"
