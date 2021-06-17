@@ -1,3 +1,0 @@
-local NetworkService = {}
-
-return NetworkService

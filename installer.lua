@@ -1,1 +1,9 @@
-loadstring(http.get("https://raw.githubusercontent.com/raphtalia/ComputerCraft-scripts/master/installer.lua").readAll())()
+--[[
+    Main branch
+    loadstring(http.get("https://raw.githubusercontent.com/raphtalia/ComputerCraft-scripts/main/installer.lua").readAll())()
+
+    Development branch
+    loadstring(http.get("https://raw.githubusercontent.com/raphtalia/ComputerCraft-scripts/development/installer.lua").readAll())()
+]]
+
+print("test")
