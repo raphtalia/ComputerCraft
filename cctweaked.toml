@@ -52,3 +52,6 @@ property = true
 
 [colors.black]
 property = true
+
+[[commands.native.args]]
+type = "any"
