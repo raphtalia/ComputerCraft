@@ -76,3 +76,96 @@ type = "any"
 
 [[commands.getBlockInfo.args]]
 type = "any"
+
+[[disk.isPresent.args]]
+type = "any"
+
+[[disk.getLabel.args]]
+type = "any"
+
+[[disk.setLabel.args]]
+type = "any"
+
+[[disk.hasData.args]]
+type = "any"
+
+[[disk.getMountPath.args]]
+type = "any"
+
+[[disk.hasAudio.args]]
+type = "any"
+
+[[disk.getAudioTitle.args]]
+type = "any"
+
+[[disk.playAudio.args]]
+type = "any"
+
+[[disk.stopAudio.args]]
+type = "any"
+
+[[disk.eject.args]]
+type = "any"
+
+[[disk.getID.args]]
+type = "any"
+
+[[fs.isDriveRoot.args]]
+type = "any"
+
+[[fs.complete.args]]
+type = "any"
+
+[[fs.list.args]]
+type = "any"
+
+[[fs.combine.args]]
+type = "any"
+
+[[fs.getName.args]]
+type = "any"
+
+[[fs.getDir.args]]
+type = "any"
+
+[[fs.getSize.args]]
+type = "any"
+
+[[fs.exists.args]]
+type = "any"
+
+[[fs.isDir.args]]
+type = "any"
+
+[[fs.isReadOnly.args]]
+type = "any"
+
+[[fs.makeDir.args]]
+type = "any"
+
+[[fs.move.args]]
+type = "any"
+
+[[fs.copy.args]]
+type = "any"
+
+[[fs.delete.args]]
+type = "any"
+
+[[fs.open.args]]
+type = "any"
+
+[[fs.getDrive.args]]
+type = "any"
+
+[[fs.getFreeSpace.args]]
+type = "any"
+
+[[fs.find.args]]
+type = "any"
+
+[[fs.getCapacity.args]]
+type = "any"
+
+[[fs.attributes.args]]
+type = "any"
