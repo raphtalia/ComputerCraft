@@ -55,3 +55,24 @@ property = true
 
 [[commands.native.args]]
 type = "any"
+
+[[commands.async.args]]
+type = "any"
+
+[[commands.exec.args]]
+type = "any"
+
+[[commands.execAsync.args]]
+type = "any"
+
+[[commands.list.args]]
+type = "any"
+
+[[commands.getBlockPosition.args]]
+type = "any"
+
+[[commands.getBlockInfos.args]]
+type = "any"
+
+[[commands.getBlockInfo.args]]
+type = "any"
