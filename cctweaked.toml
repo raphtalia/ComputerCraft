@@ -667,3 +667,135 @@ type = "any"
 
 [[textutils.complete.args]]
 type = "any"
+
+[[turtle.forward.args]]
+type = "any"
+
+[[turtle.back.args]]
+type = "any"
+
+[[turtle.up.args]]
+type = "any"
+
+[[turtle.down.args]]
+type = "any"
+
+[[turtle.turnLeft.args]]
+type = "any"
+
+[[turtle.turnRight.args]]
+type = "any"
+
+[[turtle.dig.args]]
+type = "any"
+
+[[turtle.digUp.args]]
+type = "any"
+
+[[turtle.digDown.args]]
+type = "any"
+
+[[turtle.place.args]]
+type = "any"
+
+[[turtle.placeUp.args]]
+type = "any"
+
+[[turtle.placeDown.args]]
+type = "any"
+
+[[turtle.drop.args]]
+type = "any"
+
+[[turtle.dropUp.args]]
+type = "any"
+
+[[turtle.dropDown.args]]
+type = "any"
+
+[[turtle.select.args]]
+type = "any"
+
+[[turtle.getItemCount.args]]
+type = "any"
+
+[[turtle.getItemSpace.args]]
+type = "any"
+
+[[turtle.detect.args]]
+type = "any"
+
+[[turtle.detectUp.args]]
+type = "any"
+
+[[turtle.detectDown.args]]
+type = "any"
+
+[[turtle.compare.args]]
+type = "any"
+
+[[turtle.compareUp.args]]
+type = "any"
+
+[[turtle.compareDown.args]]
+type = "any"
+
+[[turtle.attack.args]]
+type = "any"
+
+[[turtle.attackUp.args]]
+type = "any"
+
+[[turtle.attackDown.args]]
+type = "any"
+
+[[turtle.suck.args]]
+type = "any"
+
+[[turtle.suckUp.args]]
+type = "any"
+
+[[turtle.suckDown.args]]
+type = "any"
+
+[[turtle.getFuelLevel.args]]
+type = "any"
+
+[[turtle.refuel.args]]
+type = "any"
+
+[[turtle.compareTo.args]]
+type = "any"
+
+[[turtle.transferTo.args]]
+type = "any"
+
+[[turtle.getSelectedSlot.args]]
+type = "any"
+
+[[turtle.getFuelLimit.args]]
+type = "any"
+
+[[turtle.equipLeft.args]]
+type = "any"
+
+[[turtle.equipRight.args]]
+type = "any"
+
+[[turtle.inspect.args]]
+type = "any"
+
+[[turtle.inspectUp.args]]
+type = "any"
+
+[[turtle.inspectDown.args]]
+type = "any"
+
+[[turtle.getItemDetail.args]]
+type = "any"
+
+[[turtle.craft.args]]
+type = "any"
+
+[[vector.new.args]]
+type = "any"
