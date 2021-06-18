@@ -5,6 +5,21 @@
 base = "lua51"
 name = "cctweaked"
 
+[globals._HOST]
+property = true
+
+[globals._CC_DEFAULT_SETTINGS]
+property = true
+
+[[globals.write.args]]
+type = "any"
+
+[[globals.printError.args]]
+type = "any"
+
+[[globals.read.args]]
+type = "any"
+
 [colors.white]
 property = true
 
@@ -798,4 +813,7 @@ type = "any"
 type = "any"
 
 [[vector.new.args]]
+type = "any"
+
+[[window.create.args]]
 type = "any"
