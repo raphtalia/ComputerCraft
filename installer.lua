@@ -40,7 +40,7 @@ local GithubAPI = {
             }
         )
         if not response then
-            error(e)
+            error(("Request to %s failed\n%s"):format(url, e))
         end
 
         return response:readAll()
