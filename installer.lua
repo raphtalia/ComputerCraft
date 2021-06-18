@@ -75,7 +75,9 @@ local GithubAPI = {
     end
 end
 
-local Installer = {} do
+local Installer = {
+    InstallPaths = {},
+} do
     function Installer._makeFile(path, sha)
         print("Copying ".. path)
         local raw = GithubAPI.getBlobRaw(sha)
@@ -107,9 +109,26 @@ local Installer = {} do
             fs.delete(path)
         end
 
-        print("Installing commit ".. commitSha)
+        local existingInstallPath = Installer.InstallPaths[commitSha]
+        if existingInstallPath and existingInstallPath ~= path then
+            -- We've already installed with this commit so lets reuse the last install
+            print("Copying commit ".. commitSha)
 
-        Installer._makeTree(path, commitSha)
+            fs.copy(existingInstallPath, path)
+        else
+            -- We've never installed with this commit before
+            print("Installing commit ".. commitSha)
+
+            Installer._makeTree(path, commitSha)
+
+            Installer.InstallPaths[commitSha] = path
+        end
+
+        local startUpPath = fs.getDir(path).. "/startup.lua"
+        if fs.exists(startUpPath) then
+            fs.delete(startUpPath)
+        end
+        fs.copy(path.. "/src/startup.lua", startUpPath)
     end
 end
 
@@ -244,7 +263,7 @@ return function(repositoryBranch)
         end
     end
 
-    if choiceBoolean("> Would you like to use a Github Personal Access Token for higher ratelimits??") then
+    if choiceBoolean("> Would you like to use a Github Personal Access Token for higher ratelimits?") then
         GithubAPI.Token = input("Github Personal Access Token", "*")
     end
 
@@ -252,6 +271,10 @@ return function(repositoryBranch)
 
     local commitSha = GithubAPI.getLatestCommit().sha
     if choiceBoolean(("> The latest commit is \n%s\nis this the correct commit?"):format(commitSha)) then
+        --[[
+            Mainly for development to ensure ComputerCraft is getting the
+            correct commit
+        ]]
         local installStart = os.clock()
         clear()
         print("\nInstalling to")
@@ -259,20 +282,9 @@ return function(repositoryBranch)
             print("\n".. path)
         end
 
-        Installer.install(installPaths[1], commitSha)
-        for i = 2, #installPaths do
-            local path = installPaths[i]
-            print("\nCopying to ".. path)
-            fs.copy(installPaths[1], path)
+        for _,installPath in ipairs(installPaths) do
+            Installer.install(installPath, commitSha)
         end
-
-        print("ATTEMPTING", fs.getDir(installPaths[1]).. "/startup.lua")
-
-        fs.copy(installPaths[1].. "/src/startup.lua", fs.getDir(installPaths[1]).. "/startup.lua")
-        for i = 2, #installPaths do
-            fs.copy(installPaths[1].. "/src/startup.lua", fs.getDir(installPaths[i]).. "/startup.lua")
-        end
-
         print(("\nInstallation finished in %d seconds"):format(os.clock() - installStart))
 
         print("\nRebooting in 3 seconds")
