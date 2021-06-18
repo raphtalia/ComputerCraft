@@ -58,6 +58,8 @@ local function choiceOptions(text, options)
 end
 
 return function()
+    print(input("input test"))
+
     print(choiceBoolean(
         "this is a boolean",
         "this is the true option",
