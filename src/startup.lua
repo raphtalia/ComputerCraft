@@ -23,10 +23,6 @@ local function loadfile(path, env)
 end
 
 local function require(path, env, ...)
-    print("ENVIRONMENT")
-    for i,v in pairs(env) do
-        print(i,v)
-    end
     env = env or _G
 
     if fs.isDir(path) then
@@ -43,14 +39,9 @@ local function require(path, env, ...)
                     Name = fs.getName(path),
                 }
             },
-            env
+            {__index = env}
         )
-        local module = loadfile(path, env)(...)
-        print("RETURNING")
-        for i,v in pairs(module) do
-            print(i,v)
-        end
-        return module
+        return loadfile(path, env)(...)
     else
         env = setmetatable(
             {
@@ -58,18 +49,13 @@ local function require(path, env, ...)
                     Directory = path
                 }
             },
-            env
+            {__index = env}
         )
-        local module = loadfile(path, env)(...)
-        print("RETURNING")
-        for i,v in pairs(module) do
-            print(i,v)
-        end
-        return module
+        return loadfile(path, env)(...)
     end
 end
 
-Environment = setmetatable(require(SRC_PATH.. "/Environment.lua"), _G)
+Environment = setmetatable(require(SRC_PATH.. "/Environment.lua"), {__index = _G})
 
 for _,libraryName in ipairs(fs.list(LIBRARIES_PATH)) do
     print("Loading library ".. libraryName)
