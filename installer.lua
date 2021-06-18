@@ -248,17 +248,17 @@ return function(repositoryBranch)
         GithubAPI.Token = input("Github Personal Access Token Token", "*")
     end
 
-    local installStart = os.clock()
-    clear()
-    print("\nInstalling to")
-    for _,path in ipairs(installPaths) do
-        print("\n".. path)
-    end
-
     GithubAPI.Branch = repositoryBranch
 
     local commitSha = GithubAPI.getLatestCommit().sha
     if choiceBoolean(("> The latest commit is \n%s\nis this the correct commit?"):format(commitSha)) then
+        local installStart = os.clock()
+        clear()
+        print("\nInstalling to")
+        for _,path in ipairs(installPaths) do
+            print("\n".. path)
+        end
+
         Installer.install(installPaths[1], commitSha)
         for i = 2, #installPaths do
             local path = installPaths[i]
