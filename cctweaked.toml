@@ -529,3 +529,141 @@ type = "any"
 
 [[shell.switchTab.args]]
 type = "any"
+
+[[term.nativePaletteColour.args]]
+type = "any"
+
+[[term.nativePaletteColor.args]]
+type = "any"
+
+[[term.write.args]]
+type = "any"
+
+[[term.scroll.args]]
+type = "any"
+
+[[term.getCursorPos.args]]
+type = "any"
+
+[[term.setCursorPos.args]]
+type = "any"
+
+[[term.getCursorBlink.args]]
+type = "any"
+
+[[term.setCursorBlink.args]]
+type = "any"
+
+[[term.getSize.args]]
+type = "any"
+
+[[term.clear.args]]
+type = "any"
+
+[[term.clearLine.args]]
+type = "any"
+
+[[term.getTextColour.args]]
+type = "any"
+
+[[term.getTextColor.args]]
+type = "any"
+
+[[term.setTextColour.args]]
+type = "any"
+
+[[term.setTextColor.args]]
+type = "any"
+
+[[term.getBackgroundColour.args]]
+type = "any"
+
+[[term.getBackgroundColor.args]]
+type = "any"
+
+[[term.setBackgroundColour.args]]
+type = "any"
+
+[[term.setBackgroundColor.args]]
+type = "any"
+
+[[term.isColour.args]]
+type = "any"
+
+[[term.isColor.args]]
+type = "any"
+
+[[term.blit.args]]
+type = "any"
+
+[[term.setPaletteColour.args]]
+type = "any"
+
+[[term.getPaletteColour.args]]
+type = "any"
+
+[[term.getPaletteColor.args]]
+type = "any"
+
+[[term.redirect.args]]
+type = "any"
+
+[[term.current.args]]
+type = "any"
+
+[[term.native.args]]
+type = "any"
+
+[textutils.empty_json_array]
+property = true
+
+[textutils.json_null]
+property = true
+
+[[textutils.slowWrite.args]]
+type = "any"
+
+[[textutils.slowPrint.args]]
+type = "any"
+
+[[textutils.formatTime.args]]
+type = "any"
+
+[[textutils.pagedPrint.args]]
+type = "any"
+
+[[textutils.tabulate.args]]
+type = "any"
+
+[[textutils.pagedTabulate.args]]
+type = "any"
+
+[[textutils.serialize.args]]
+type = "any"
+
+[[textutils.seralise.args]]
+type = "any"
+
+[[textutils.unserialize.args]]
+type = "any"
+
+[[textutils.unserialise.args]]
+type = "any"
+
+[[textutils.serializeJSON.args]]
+type = "any"
+
+[[textutils.serialiseJSON.args]]
+type = "any"
+
+[[textutils.unserializeJSON.args]]
+type = "any"
+
+[[textutils.unserialiseJSON.args]]
+type = "any"
+
+[[textutils.urlEncode.args]]
+type = "any"
+
+[[textutils.complete.args]]
+type = "any"
