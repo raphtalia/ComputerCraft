@@ -397,3 +397,135 @@ type = "any"
 
 [[rednet.run.args]]
 type = "any"
+
+[[redstone.getSides.args]]
+type = "any"
+
+[[redstone.setOutput.args]]
+type = "any"
+
+[[redstone.getOutput.args]]
+type = "any"
+
+[[redstone.getInput.args]]
+type = "any"
+
+[[redstone.setAnalogOutput.args]]
+type = "any"
+
+[[redstone.setAnalogueOutput.args]]
+type = "any"
+
+[[redstone.getAnalogOutput.args]]
+type = "any"
+
+[[redstone.getAnalogueOutput.args]]
+type = "any"
+
+[[redstone.getAnalogInput.args]]
+type = "any"
+
+[[redstone.getAnalogueInput.args]]
+type = "any"
+
+[[redstone.setBundledOutput.args]]
+type = "any"
+
+[[redstone.getBundledOutput.args]]
+type = "any"
+
+[[redstone.getBundledInput.args]]
+type = "any"
+
+[[redstone.testBundledInput.args]]
+type = "any"
+
+[[settings.define.args]]
+type = "any"
+
+[[settings.undefine.args]]
+type = "any"
+
+[[settings.set.args]]
+type = "any"
+
+[[settings.get.args]]
+type = "any"
+
+[[settings.getDetails.args]]
+type = "any"
+
+[[settings.unset.args]]
+type = "any"
+
+[[settings.clear.args]]
+type = "any"
+
+[[settings.getNames.args]]
+type = "any"
+
+[[settings.load.args]]
+type = "any"
+
+[[settings.save.args]]
+type = "any"
+
+[[shell.execute.args]]
+type = "any"
+
+[[shell.run.args]]
+type = "any"
+
+[[shell.exit.args]]
+type = "any"
+
+[[shell.dir.args]]
+type = "any"
+
+[[shell.setDir.args]]
+type = "any"
+
+[[shell.path.args]]
+type = "any"
+
+[[shell.setPath.args]]
+type = "any"
+
+[[shell.resolve.args]]
+type = "any"
+
+[[shell.resolveProgram.args]]
+type = "any"
+
+[[shell.programs.args]]
+type = "any"
+
+[[shell.complete.args]]
+type = "any"
+
+[[shell.completeProgram.args]]
+type = "any"
+
+[[shell.setCompletionFunction.args]]
+type = "any"
+
+[[shell.getCompletionInfo.args]]
+type = "any"
+
+[[shell.getRunningProgram.args]]
+type = "any"
+
+[[shell.setAlias.args]]
+type = "any"
+
+[[shell.clearAlias.args]]
+type = "any"
+
+[[shell.aliases.args]]
+type = "any"
+
+[[shell.openTab.args]]
+type = "any"
+
+[[shell.switchTab.args]]
+type = "any"
