@@ -234,5 +234,5 @@ return function(repositoryBranch)
         Installer.install(path)
     end
 
-    print(("\nInstallation finished in %c seconds"):format(os.clock() - installStart))
+    print(("\nInstallation finished in %d seconds"):format(os.clock() - installStart))
 end
