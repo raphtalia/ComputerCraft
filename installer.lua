@@ -57,12 +57,16 @@ local GithubAPI = {
             i = i + 1
         end
 
-        return textutils.unserializeJSON(http.get(
+        local response = http.get(
             url,
             {
                 Authorization = "Basic ".. GithubAPI.Token
             }
-        ):readAll())
+        )
+
+        print(response.getResponseCode(), response)
+
+        return textutils.unserializeJSON(response:readAll())
     end
 
     function GithubAPI.listCommits()
