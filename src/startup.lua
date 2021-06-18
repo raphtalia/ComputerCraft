@@ -41,7 +41,7 @@ local function require(path, env, ...)
             },
             env
         )
-        loadfile(path, env)(...)
+        return loadfile(path, env)(...)
     else
         env = setmetatable(
             {
@@ -51,7 +51,7 @@ local function require(path, env, ...)
             },
             env
         )
-        loadfile(path, env)(...)
+        return loadfile(path, env)(...)
     end
 end
 
