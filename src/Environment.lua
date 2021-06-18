@@ -60,9 +60,26 @@ local Environment = {
     error = error,
     loadfile = loadfile,
 }
+local Modules = {}
 
 function Environment.require(path)
-    print("GETTING", path)
+    if Modules[path] then
+        return Modules[path]
+    else
+        local file = fs.open(path, "r")
+
+        local ok, e = loadstring(file:readAll())
+        if ok then
+            local func = setfenv(ok, env)
+
+            file:close()
+            local module = func()
+            Modules[path] = module
+            return module
+        else
+            error(("\n%s\n%s"):format(path, e))
+        end
+    end
 end
 
 Environment._G = Environment
