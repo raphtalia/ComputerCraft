@@ -42,7 +42,7 @@ local GithubAPI = {
             }
         )
         if not response then
-            error(("Request to %s failed\n%s"):format(url, e))
+            error(("\nRequest to %s failed\n%s"):format(url, e))
         end
 
         return response:readAll()
@@ -136,19 +136,19 @@ end
 
 local function clear()
     term.clear()
-    term.setCursorPos(0, 1)
+    term.setCursorPos(0, 0)
 end
 
 local function input(text, ...)
     clear()
-    print(("%s "):format(text))
+    print(("\n%s "):format(text))
     sleep(0.15)
     return read(...)
 end
 
 local function choiceBoolean(text, trueOption, falseOption)
     clear()
-    print(("%s\n[Y] %s\n[N] %s"):format(text, trueOption or "Yes", falseOption or "No"))
+    print(("\n%s\n[Y] %s\n[N] %s"):format(text, trueOption or "Yes", falseOption or "No"))
 
     while true do
         local eventData = {os.pullEvent("key")}
@@ -174,10 +174,10 @@ local function choiceOptions(text, options)
     end
 
     clear()
-    print(text)
+    print("\n".. text)
 
     for key, option in pairs(keyedOptions) do
-        print(("[%s] %s"):format(key, option[2]))
+        print(("\n[%s] %s"):format(key, option[2]))
     end
 
     while true do
@@ -279,20 +279,20 @@ return function(repositoryBranch)
         ]]
         local installStart = os.clock()
         clear()
-        print("Installing to")
+        print("\nInstalling to")
         for _,path in ipairs(installPaths) do
-            print(path)
+            print("\n".. path)
         end
 
         for _,installPath in ipairs(installPaths) do
             Installer.install(installPath, commitSha)
         end
-        print(("Installation finished in %d seconds"):format(os.clock() - installStart))
+        print(("\nInstallation finished in %d seconds"):format(os.clock() - installStart))
 
-        print("Rebooting in 3 seconds")
+        print("\nRebooting in 3 seconds")
         sleep(3)
         os.reboot()
     else
-        printError("Installation aborted")
+        printError("\nInstallation aborted")
     end
 end
