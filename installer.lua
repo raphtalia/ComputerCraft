@@ -258,7 +258,7 @@ return function(repositoryBranch)
     GithubAPI.Branch = repositoryBranch
 
     local commitSha = GithubAPI.getLatestCommit().sha
-    if choiceBoolean(("> The latest commit is %s, is this the correct commit?"):format(commitSha)) then
+    if choiceBoolean(("> The latest commit is \n%s\nis this the correct commit?"):format(commitSha)) then
         Installer.install(installPaths[1], commitSha)
         for i = 2, #installPaths do
             local path = installPaths[i]
@@ -268,6 +268,6 @@ return function(repositoryBranch)
 
         print(("\nInstallation finished in %d seconds"):format(os.clock() - installStart))
     else
-        print("\nInstallation aborted")
+        printError("\nInstallation aborted")
     end
 end
