@@ -2,12 +2,12 @@
     Main branch
     loadstring(http.get("https://raw.githubusercontent.com/raphtalia/ComputerCraft-scripts/main/installer.lua").readAll())()("main")
     OR
-    pastebin run QjPNA4d0
+    pastebin run exJHax7T
 
     Development branch
     loadstring(http.get("https://raw.githubusercontent.com/raphtalia/ComputerCraft-scripts/development/installer.lua").readAll())()("development")
     OR
-    pastebin run PRPGTyxj
+    pastebin run kHWhQ5AT
 ]]
 
 local NUMBERS = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"}
@@ -149,6 +149,8 @@ end
 return function(repositoryBranch)
     local installPaths = {}
 
+    print(1)
+
     local installChoice = choiceOptions(
         "> A disk drive with a floppy disk was detected, where would you like to install to?",
         {
@@ -158,9 +160,13 @@ return function(repositoryBranch)
         }
     )
 
+    print(2)
+
     if installChoice == 1 or installChoice == 2 then
         installPaths = {"/rom"}
     end
+
+    print(3)
 
     if installChoice == 2 or installChoice == 3 then
         local options = {}
@@ -189,9 +195,13 @@ return function(repositoryBranch)
         end
     end
 
+    print(4)
+
     if choiceBoolean("> Would you like to use a Github API token to avoid ratelimiting?") then
         GithubAPI.Token = input("Github API Token", "*")
     end
+
+    print(5)
 
     clear()
     print("\nInstalling to")
@@ -199,9 +209,13 @@ return function(repositoryBranch)
         print("\n".. path)
     end
 
+    print(6)
+
     GithubAPI.Branch = repositoryBranch
 
     for _,path in ipairs(installPaths) do
         install(path)
     end
+
+    print(7)
 end
