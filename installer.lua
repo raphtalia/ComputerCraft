@@ -177,7 +177,11 @@ local Installer = {} do
         print("Making ".. path)
         local blob = GithubAPI.getBlob(sha)
 
-        local file = io.open(path, "w")
+        local file, e = fs.open(path, "w")
+        if not file then
+            error(e)
+        end
+
         if blob.encoding == "base64" then
             file.write(Base64.decode(blob.content))
         else
