@@ -256,11 +256,12 @@ return function(repositoryBranch)
     GithubAPI.Branch = repositoryBranch
 
     local commitSha = GithubAPI.getLatestCommit().sha
-        if choiceBoolean("> The latest commit is %s, is this the correct commit?") then
-
-        Installer.install(installPaths[1])
+    if choiceBoolean("> The latest commit is %s, is this the correct commit?") then
+        Installer.install(installPaths[1], commitSha)
         for i = 2, #installPaths do
-            fs.copy(installPaths[1], installPaths[i])
+            local path = installPaths[i]
+            print("\nCopying to ".. path)
+            fs.copy(installPaths[1], path)
         end
 
         print(("\nInstallation finished in %d seconds"):format(os.clock() - installStart))
