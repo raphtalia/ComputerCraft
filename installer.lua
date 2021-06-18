@@ -35,8 +35,10 @@ local GithubAPI = {
         local response, e = http.get(
             url,
             {
-                authorization = "Basic ".. GithubAPI.Token,
-                accept = "application/".. format,
+                ["accept"] = "application/".. format,
+                ["authorization"] = "Basic ".. GithubAPI.Token,
+                ["user-agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36 Edg/91.0.864.53",
+
             }
         )
         if not response then
