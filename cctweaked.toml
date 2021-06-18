@@ -11,6 +11,9 @@ property = true
 [_CC_DEFAULT_SETTINGS]
 property = true
 
+[[rawlen.args]]
+type = "any"
+
 [[sleep.args]]
 type = "any"
 
@@ -820,3 +823,131 @@ type = "any"
 
 [[window.create.args]]
 type = "any"
+
+[[utf8.char.args]]
+required = "utf8.char should be used with an argument despite it not throwing"
+type = "number"
+
+[[utf8.char.args]]
+required = false
+type = "..."
+
+[utf8.charpattern]
+property = true
+
+[[utf8.codepoint.args]]
+type = "string"
+
+[[utf8.codepoint.args]]
+required = false
+type = "number"
+
+[[utf8.codepoint.args]]
+required = false
+type = "number"
+
+[[utf8.codes.args]]
+type = "string"
+
+[[utf8.graphemes.args]]
+type = "string"
+
+[[utf8.graphemes.args]]
+required = false
+type = "number"
+
+[[utf8.graphemes.args]]
+required = false
+type = "number"
+[[utf8.len.args]]
+type = "string"
+
+[[utf8.len.args]]
+required = false
+type = "number"
+
+[[utf8.len.args]]
+required = false
+type = "number"
+
+[[utf8.nfcnormalize.args]]
+type = "string"
+
+[[utf8.nfdnormalize.args]]
+type = "string"
+
+[[utf8.offset.args]]
+type = "string"
+
+[[utf8.offset.args]]
+required = false
+type = "number"
+
+[[utf8.offset.args]]
+required = false
+type = "number"
+
+[[bit32.arshift.args]]
+type = "number"
+
+[[bit32.arshift.args]]
+type = "number"
+
+[[bit32.band.args]]
+type = "..."
+
+[[bit32.bnot.args]]
+type = "number"
+
+[[bit32.bor.args]]
+type = "..."
+
+[[bit32.btest.args]]
+type = "..."
+
+[[bit32.bxor.args]]
+type = "..."
+
+[[bit32.extract.args]]
+type = "number"
+
+[[bit32.extract.args]]
+type = "number"
+
+[[bit32.extract.args]]
+required = false
+type = "number"
+[[bit32.lrotate.args]]
+type = "number"
+
+[[bit32.lrotate.args]]
+type = "number"
+
+[[bit32.lshift.args]]
+type = "number"
+
+[[bit32.lshift.args]]
+type = "number"
+
+[[bit32.replace.args]]
+type = "number"
+
+[[bit32.replace.args]]
+type = "number"
+
+[[bit32.replace.args]]
+required = false
+type = "number"
+
+[[bit32.rrotate.args]]
+type = "number"
+
+[[bit32.rrotate.args]]
+type = "number"
+[[bit32.rshift.args]]
+type = "number"
+
+[[bit32.rshift.args]]
+type = "number"
+
+[bit]
