@@ -12,11 +12,15 @@
 
 local NUMBERS = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"}
 
+print("a")
+
 local Base64 = {} do
     function Base64.decode()
         
     end
 end
+
+print("b")
 
 local GithubAPI = {
     RepositoryUrl = "https://api.github.com/repos/raphtalia/ComputerCraft-Scripts",
@@ -64,16 +68,22 @@ local GithubAPI = {
     end
 end
 
+print("c")
+
 local function clear()
     term.clear()
     term.setCursorPos(0, 0)
 end
+
+print("d")
 
 local function input(text, ...)
     clear()
     print(("\n%s "):format(text))
     return read(...)
 end
+
+print("e")
 
 local function choiceBoolean(text, trueOption, falseOption)
     clear()
@@ -90,6 +100,8 @@ local function choiceBoolean(text, trueOption, falseOption)
         end
     end
 end
+
+print("f")
 
 local function choiceOptions(text, options)
     local keyedOptions = {}
@@ -119,6 +131,8 @@ local function choiceOptions(text, options)
     end
 end
 
+print("g")
+
 local function getDiskDrives()
     local peripherals = {
         left = peripheral.wrap("left"),
@@ -139,12 +153,16 @@ local function getDiskDrives()
     return diskDrives
 end
 
+print("h")
+
 local function install(path)
     local commit = GithubAPI.listCommits()[1]
     for i,v in pairs(commit) do
         print(i,v)
     end
 end
+
+print("i")
 
 return function(repositoryBranch)
     local installPaths = {}
