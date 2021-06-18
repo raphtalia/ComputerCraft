@@ -19,7 +19,7 @@ local GithubAPI = {
 } do
     -- Ported from https://github.com/raphtalia/GithubLuaAPI
 
-    local function get(path, queryParams)
+    local function get(path, format, queryParams)
         local url = GithubAPI.RepositoryUrl.. path
 
         local i = 1
@@ -35,7 +35,8 @@ local GithubAPI = {
         local response, e = http.get(
             url,
             {
-                Authorization = "Basic ".. GithubAPI.Token
+                authorization = "Basic ".. GithubAPI.Token,
+                accept = "application/".. format,
             }
         )
         if not response then
@@ -48,6 +49,7 @@ local GithubAPI = {
     function GithubAPI.listCommits()
         return textutils.unserializeJSON(get(
             "/commits",
+            "vnd.github.v3+json",
             {
                 sha = GithubAPI.Branch,
             }
@@ -55,11 +57,17 @@ local GithubAPI = {
     end
 
     function GithubAPI.getTree(sha)
-        return textutils.unserializeJSON(get("/git/trees/".. sha))
+        return textutils.unserializeJSON(get(
+            "/git/trees/".. sha,
+            "vnd.github.v3+json"
+        ))
     end
 
     function GithubAPI.getBlobRaw(sha)
-        return get("/git/blobs/".. sha)
+        return get(
+            "/git/blobs/".. sha,
+            "vnd.github.VERSION.raw"
+        )
     end
 end
 
