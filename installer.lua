@@ -1,16 +1,68 @@
 --[[
     Main branch
-    loadstring(http.get("https://raw.githubusercontent.com/raphtalia/ComputerCraft-scripts/main/installer.lua").readAll())()()
+    loadstring(http.get("https://raw.githubusercontent.com/raphtalia/ComputerCraft-scripts/main/installer.lua").readAll())()("main")
     OR
     pastebin run QjPNA4d0
 
     Development branch
-    loadstring(http.get("https://raw.githubusercontent.com/raphtalia/ComputerCraft-scripts/development/installer.lua").readAll())()()
+    loadstring(http.get("https://raw.githubusercontent.com/raphtalia/ComputerCraft-scripts/development/installer.lua").readAll())()("development")
     OR
     pastebin run PRPGTyxj
 ]]
 
 local NUMBERS = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"}
+
+local Base64 = {} do
+    function Base64.decode()
+        
+    end
+end
+
+local GithubAPI = {
+    RepositoryUrl = "https://api.github.com/repos/raphtalia/ComputerCraft-Scripts",
+    Branch = "main",
+    Token = "",
+} do
+    -- Ported from https://github.com/raphtalia/GithubLuaAPI
+
+    local function get(path, queryParams)
+        local url = GithubAPI.RepositoryUrl.. path
+
+        local i = 1
+        for name, value in pairs(queryParams or {}) do
+            if i == 1 then
+                url ..= ("?%s=%s"):format(name, tostring(value))
+            else
+                url ..= ("&%s=%s"):format(name, tostring(value))
+            end
+            i = i + 1
+        end
+
+        return textutils.unserializeJSON(http.get(
+            url,
+            {
+                Authorization = "Basic ".. GithubAPI.Token
+            }
+        ):readAll())
+    end
+
+    function GithubAPI.listCommits()
+        return get(
+            "/commits",
+            {
+                sha = GithubAPI.Branch,
+            }
+        )
+    end
+
+    function GithubAPI.getTree(sha)
+        return get("/git/trees/".. sha)
+    end
+
+    function GithubAPI.getBlob(sha)
+        return get("/git/blos/".. sha)
+    end
+end
 
 local function clear()
     term.clear()
@@ -87,11 +139,14 @@ local function getDiskDrives()
     return diskDrives
 end
 
-local function install(path, apitoken)
-    print(path, apitoken)
+local function install(path)
+    local commit = GithubAPI.listCommits()[1]
+    for i,v in pairs(commit) do
+        print(i,v)
+    end
 end
 
-return function()
+return function(repositoryBranch)
     local installPaths = {}
 
     local installChoice = choiceOptions(
@@ -134,9 +189,8 @@ return function()
         end
     end
 
-    local apitoken
     if choiceBoolean("> Would you like to use a Github API token to avoid ratelimiting?") then
-        apitoken = input("Token:", "*")
+        GithubAPI.Token = input("Github API Token", "*")
     end
 
     clear()
@@ -145,7 +199,9 @@ return function()
         print("\n".. path)
     end
 
+    GithubAPI.Branch = repositoryBranch
+
     for _,path in ipairs(installPaths) do
-        install(path, apitoken)
+        install(path)
     end
 end
