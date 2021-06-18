@@ -136,7 +136,7 @@ end
 
 local function clear()
     term.clear()
-    term.setCursorPos(0, 0)
+    term.setCursorPos(0, 1)
 end
 
 local function input(text, ...)
