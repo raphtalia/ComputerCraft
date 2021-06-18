@@ -90,7 +90,7 @@ local Installer = {} do
     end
 
     function Installer._makeTree(path, sha)
-        print("Making ".. path)
+        print("Copying ".. path)
         local tree = GithubAPI.getTree(sha)
 
         for _,obj in ipairs(tree.tree) do
@@ -121,7 +121,7 @@ end
 local function input(text, ...)
     clear()
     print(("\n%s "):format(text))
-    sleep(0.1)
+    sleep(0.15)
     return read(...)
 end
 
@@ -139,7 +139,7 @@ local function choiceBoolean(text, trueOption, falseOption)
             return false
         end
     end
-    sleep(0.1)
+    sleep(0.15)
 end
 
 local function choiceOptions(text, options)
@@ -168,7 +168,7 @@ local function choiceOptions(text, options)
             return option[1]
         end
     end
-    sleep(0.1)
+    sleep(0.15)
 end
 
 local function getDiskDrives()
@@ -245,7 +245,7 @@ return function(repositoryBranch)
     end
 
     if choiceBoolean("> Would you like to use a Github Personal Access Token to avoid ratelimiting?") then
-        GithubAPI.Token = input("Github Personal Access Token Token", "*")
+        GithubAPI.Token = input("Github Personal Access Token", "*")
     end
 
     GithubAPI.Branch = repositoryBranch
