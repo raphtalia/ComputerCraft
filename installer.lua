@@ -32,9 +32,9 @@ local GithubAPI = {
         local i = 1
         for name, value in pairs(queryParams or {}) do
             if i == 1 then
-                url ..= ("?%s=%s"):format(name, tostring(value))
+                url = url.. ("?%s=%s"):format(name, tostring(value))
             else
-                url ..= ("&%s=%s"):format(name, tostring(value))
+                url = url.. ("&%s=%s"):format(name, tostring(value))
             end
             i = i + 1
         end
