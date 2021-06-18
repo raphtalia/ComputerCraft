@@ -1,5 +1,6 @@
 local ROOT_PATH = fs.getDir(shell.getRunningProgram())
-local SRC_PATH = ROOT_PATH.. "/.raphtalia/src"
+local REPO_PATH = ROOT_PATH.. "/.raphtalia"
+local SRC_PATH = REPO_PATH.. "/src"
 local CORE_PATH = SRC_PATH.. "/Core"
 
 local LIBRARIES_PATH = CORE_PATH.. "/Libraries"
@@ -51,7 +52,7 @@ local function require(path, env, ...)
     end
 end
 
-Environment = setmetatable(require(CORE_PATH.. "/Environment.lua"), _G)
+Environment = setmetatable(require(REPO_PATH.. "/Environment.lua"), _G)
 
 for _,libraryName in ipairs(fs.list(LIBRARIES_PATH)) do
     print("Loading library ".. libraryName)
