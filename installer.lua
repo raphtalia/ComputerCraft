@@ -81,6 +81,8 @@ local Installer = {} do
             error(e)
         end
 
+        print(raw)
+
         file.write(raw)
         file.close()
     end
