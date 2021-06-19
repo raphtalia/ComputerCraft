@@ -5,11 +5,16 @@ local Classes = {}
 local Instance = {}
 
 function Instance.new(className, ...)
-    return Classes[className].new(...)
+    local class = Classes[className]
+    if type(class) == "string" then
+        Classes[className] = require(class)
+        class = Classes[className]
+    end
+    return class.new(...)
 end
 
 for _,className in ipairs(fs.list(CLASSES_PATH)) do
-    Classes[className:match("(.+)%..+")] = require(CLASSES_PATH.. "/".. className)
+    Classes[className:match("(.+)%..+")] = CLASSES_PATH.. "/".. className
 end
 
 return Instance

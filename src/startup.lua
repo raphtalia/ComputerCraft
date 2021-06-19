@@ -36,8 +36,9 @@ local function require(path, env, ...)
         env = setmetatable(
             {
                 script = {
+                    fs.getName(path),
                     Directory = fs.getDir(path),
-                    Name = fs.getName(path),
+                    Path = path,
                 }
             },
             {__index = env}
@@ -47,7 +48,9 @@ local function require(path, env, ...)
         env = setmetatable(
             {
                 script = {
-                    Directory = fs.getDir(path)
+                    fs.getName(path),
+                    Directory = fs.getDir(path),
+                    Path = path,
                 }
             },
             {__index = env}
@@ -75,15 +78,41 @@ end
 -- Some libraries get to be global
 Environment.Instance = Environment.require("Instance")
 
+local Requires = {}
+
 for _,serviceName in ipairs(fs.list(SERVICES_PATH)) do
-    print("Loading service ".. serviceName)
-    Modules[getFileName(serviceName)] = require(("%s/%s"):format(SERVICES_PATH, serviceName), Environment)
+    table.insert(Requires, function()
+        print("Loading service ".. serviceName)
+        Modules[getFileName(serviceName)] = require(("%s/%s"):format(SERVICES_PATH, serviceName), Environment)
+    end)
 end
 
-local parallelRequire = coroutine.wrap(require)
+parallel.waitForAll(unpack(Requires))
+
+local Handlers = {}
+
 for _,handlerName in ipairs(fs.list(HANDLERS_PATH)) do
     print("Loading handler ".. handlerName)
-    parallelRequire(("%s/%s"):format(HANDLERS_PATH, handlerName), Environment)
+    local handler = require(("%s/%s"):format(HANDLERS_PATH, handlerName), Environment)
+    if type(handler) == "function" then
+        table.insert(Handlers, handler)
+    elseif type(handler) == "table" then
+        for _,func in ipairs(handler) do
+            table.insert(Handlers, func)
+        end
+    end
 end
 
-require(CORE_PATH.. "/Shell.lua", Environment)
+-- Replace error handlers with more detailed ones
+Environment.error = function(message)
+    local env = getfenv(3)
+    error(("\n%s: %s\n%s\nStack End"):format(env.script.Path, message or "", debug.traceback("Stack Begin", 2)), 3)
+end
+
+--[[
+    Run all handlers at the same time, handlers are in charge of keeping track
+    of their state.
+]]
+while true do
+    parallel.waitForAny(unpack(Handlers))
+end

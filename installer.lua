@@ -202,32 +202,12 @@ local function choiceOptions(text, options)
     sleep(0.15)
 end
 
-local function getDiskDrives()
-    local peripherals = {
-        left = peripheral.wrap("left"),
-        right = peripheral.wrap("right"),
-        front = peripheral.wrap("front"),
-        back = peripheral.wrap("back"),
-        top = peripheral.wrap("top"),
-        bottom = peripheral.wrap("bottom"),
-    }
-    local diskDrives = {}
-
-    for _,diskDrive in pairs(peripherals) do
-        if peripheral.getType(diskDrive) == "drive" then
-            table.insert(diskDrives, diskDrive)
-        end
-    end
-
-    return diskDrives
-end
-
 return function(repositoryBranch)
     local installPaths = {}
     local diskDrives = {}
     local installChoice
 
-    for _,diskDrive in ipairs(getDiskDrives()) do
+    for _,diskDrive in ipairs(peripheral.find("drive")) do
         if diskDrive.hasData() then
             table.insert(diskDrives, diskDrive)
         end

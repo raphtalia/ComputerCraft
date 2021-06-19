@@ -21,7 +21,6 @@ local Environment = {
     setmetatable = setmetatable,
     next = next,
     disk = disk,
-    assert = assert,
     rawlen = rawlen,
     ipairs = ipairs,
     keys = keys,
@@ -31,7 +30,7 @@ local Environment = {
     bit32 = bit32,
     getmetatable = getmetatable,
     http = http,
-    wait = sleep,
+    sleep = sleep,
     tonumber = tonumber,
     utf8 = utf8,
     rawset = rawset,
@@ -65,10 +64,16 @@ local Environment = {
 }
 local Modules = {}
 
+function Environment.assert(condition, error)
+    if condition then
+        Environment.error(error)
+    end
+end
+
 function Environment.require(path)
     if Modules[path] then
         return Modules[path]
-    else
+    elseif fs.exists(path) then
         local file = fs.open(path, "r")
 
         local ok, e = loadstring(file:readAll())
@@ -80,7 +85,18 @@ function Environment.require(path)
             Modules[path] = module
             return module
         else
-            error(("\n%s\n%s"):format(path, e))
+            error(("\n[Error] %s\n%s"):format(path, e))
+        end
+    else
+        local waitStart = os.time()
+        while true do
+            sleep()
+            if Modules[path] then
+                return Modules[path]
+            end
+            if os.time() - waitStart > 3 then
+                error(("\n[Error] Yielded for %s to load"):format(path))
+            end
         end
     end
 end
