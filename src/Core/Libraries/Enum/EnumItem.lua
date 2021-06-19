@@ -1,9 +1,9 @@
 local EnumItem = {}
-function meta:__tostring()
+function EnumItem:__tostring()
     return ("Enum.%s.%s"):format(tostring(self.Enum), self.Name)
 end
 
-function meta:__index(i)
+function EnumItem:__index(i)
     local v = props[i]
 
     if v then
@@ -13,7 +13,7 @@ function meta:__index(i)
     end
 end
 
-function meta:__newindex(i)
+function EnumItem:__newindex(i)
     error(i.. " cannot be assigned to", 2)
 end
 

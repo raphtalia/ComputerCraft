@@ -1,1 +1,3 @@
-print("im a test service")
+local RunService = {}
+
+return RunService
