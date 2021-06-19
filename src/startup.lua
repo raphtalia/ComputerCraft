@@ -47,7 +47,7 @@ local function require(path, env, ...)
         env = setmetatable(
             {
                 script = {
-                    Directory = path
+                    Directory = fs.getDir(path)
                 }
             },
             {__index = env}
@@ -60,14 +60,20 @@ local function getFileName(name)
     return name:match("(.+)%..+") or name
 end
 
-local envModule = setmetatable(require(SRC_PATH.. "/Environment.lua"), {__index = _G})
+local envModule = setmetatable(require(CORE_PATH.. "/Environment.lua"), {__index = _G})
 Environment = envModule.Environment
 Modules = envModule.Modules
+
+-- Some variants cannot be easily injected
+Environment.shell = shell
 
 for _,libraryName in ipairs(fs.list(LIBRARIES_PATH)) do
     print("Loading library ".. libraryName)
     Modules[getFileName(libraryName)] = require(("%s/%s"):format(LIBRARIES_PATH, libraryName), Environment)
 end
+
+-- Some libraries get to be global
+Environment.Instance = Environment.require("Instance")
 
 for _,serviceName in ipairs(fs.list(SERVICES_PATH)) do
     print("Loading service ".. serviceName)
@@ -79,3 +85,5 @@ for _,handlerName in ipairs(fs.list(HANDLERS_PATH)) do
     print("Loading handler ".. handlerName)
     parallelRequire(("%s/%s"):format(HANDLERS_PATH, handlerName), Environment)
 end
+
+require(CORE_PATH.. "/Shell.lua", Environment)
